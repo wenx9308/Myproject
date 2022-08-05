@@ -22,7 +22,7 @@ public class TwoSum {
     }
     //----------------------------------------------------------------------
     //hash map method: time complexity worst case is O(n^2), average is O(n), space complexity n
-    public static Set<HashSet<Integer>> getTwoSum(int[] numbers, int targetSum) {
+    public static Set<HashSet<Integer>> getTwoSum(int[] numbers, int target) {
         if (numbers == null || numbers.length < 2) {
             return null;
         }
@@ -39,7 +39,7 @@ public class TwoSum {
         HashSet<HashSet<Integer>> myresult = new HashSet<>();
 
         for (int i = 0; i < numbers.length; i++) {
-            int c = targetSum - numbers[i];
+            int c = target - numbers[i];
             if (map.containsKey(c)) {
                 for (int j = 0; j < map.get(c).size(); j++) {
                     HashSet<Integer> tempSet = new HashSet<>(Arrays.asList(i, map.get(c).get(j)));
@@ -49,18 +49,28 @@ public class TwoSum {
                 }
             }
         }
-        return myresult;
+        if(myresult.size() == 0) return null;
+        else return myresult;
     }
 
     public static void main(String[] args) {
         System.out.println("The solution using brute force method: ");
-        for (int[] arr: bruteForce(new int[] {1,1,2,3}, 4)){
-            System.out.println(Arrays.toString(arr));
+        try {
+            for (int[] arr : bruteForce(new int[]{1,1,2,3 }, 4)) {
+                System.out.println(Arrays.toString(arr));
+            }
+        } catch (Exception e) {
+            System.out.println("There is no solution for this array");
         }
 
+
         System.out.println("The solution using hashmap method: ");
-        for (Set<Integer> solution : getTwoSum(new int[] {1,1,2,3}, 4)){
-            System.out.println(Arrays.toString(solution.toArray()));
+        try {
+            for (Set<Integer> solution : getTwoSum(new int[]{1,1,2,3}, 4)) {
+                System.out.println(Arrays.toString(solution.toArray()));
             }
+        }catch (Exception e){
+            System.out.println("There is no solution for this array");
         }
+    }
 }
