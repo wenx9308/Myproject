@@ -21,7 +21,7 @@ public class TwoSum {
         else return res;
     }
     //----------------------------------------------------------------------
-    //hash map method: time complexity worst case is O(n^2), average is O(n), space complexity
+    //hash map method: time complexity worst case is O(n^2), average is O(n), space complexity n
     public static Set<HashSet<Integer>> getTwoSum(int[] numbers, int targetSum) {
         if (numbers == null || numbers.length < 2) {
             return null;
